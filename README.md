@@ -22,8 +22,8 @@ an example can be found at test.js. `module.exports` returns an object with `enc
 ## important notes
 if you decide to use paracipher, you should know a few things.
 * a buffer of at least 32 bytes is recommended for the key (although the key can be any size and even a string).
-* nonces can be any size, but ideally they should be at least 32 random bytes.
-* nonces should never be reused. ideally, you would use something like `crypto.randomBytes` to generate the nonce. however, in the event that a nonce **is** reused, you should be okay if the plaintexts encrypted with that nonce are different (this scheme is nonce-reuse resistant).
+* nonces can be any size, but ideally they should be at least 32 random bytes or a counter.
+* nonces should never be reused. ideally, you would use something like `crypto.randomBytes` or a counter to generate the nonce. however, in the event that a nonce **is** reused, you should be okay if the plaintexts encrypted with that nonce are different (this scheme is nonce-reuse resistant).
 
 ## questions or comments
 direct them to parabirb on Rizon (IRC), parabirb@protonmail.ch (e-mail), @parabirb (Twitter), or parabirb#9968 (Discord).
