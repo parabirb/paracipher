@@ -42,6 +42,7 @@ function decipher(p, k) {
 
 function encipher(p, k, n) {
     p = Buffer.from(p);
+    n = _hmac(Buffer.concat([Buffer.from(n), p]), k);
     return Buffer.concat([n, _cipher(pkcs.pad(p), k, n)]);
 }
 
