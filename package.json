@@ -1,0 +1,17 @@
+{
+  "name": "paracipher",
+  "version": "1.0.0",
+  "description": "a simple stream cipher based on sha3-256.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "cipher"
+  ],
+  "author": "parabirb",
+  "license": "Unlicense",
+  "dependencies": {
+    "pkcs7": "^1.0.4"
+  }
+}
