@@ -20,8 +20,6 @@ function _hmac(p, k) {
 }
 
 function _cipher(p, k, n) {
-    n = Buffer.from(n);
-    if (n.length !== 32) throw new Error("A 256-bit (32 byte) nonce is required."); 
     const len = p.length / 16;
     let state = _hmac(n, k);
     let processed = [];
@@ -35,6 +33,7 @@ function _cipher(p, k, n) {
 }
 
 function decipher(p, k) {
+    if (p.length < 32) throw new Error("Nonce is not present.");
     const n = p.slice(0, 32);
     p = p.slice(32);
     return pkcs.unpad(_cipher(p, k, n));
