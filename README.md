@@ -13,6 +13,11 @@ each "block" is 128 bits. the state is initialized with a key and a nonce (at fi
 ## usage
 an example can be found at test.js. the code is short, so you can figure out how to use it without any assistance.
 
+## important notes
+if you decide to use paracipher, you should know a few things.
+* a buffer of at least 32 bytes is recommended for the key (although the key can be any size and even a string).
+* nonces should never be reused. ideally, you would use something like `crypto.randomBytes` to generate the nonce.
+
 ## questions or comments
 direct them to parabirb on Rizon (IRC), parabirb@protonmail.ch (e-mail), @parabirb (Twitter), or parabirb#9968 (Discord).
 
