@@ -82,7 +82,7 @@ function decipherAE(p, k) {
     if (!p.slice(0, 32).equals(_hmac(p.slice(32), k))) throw new Error(`MAC is ${p.slice(0, 32).toString("hex")} when it should be ${_hmac(p.slice(32), k).toString("hex")}.`);
     // remove mac
     p = p.slice(32);
-    // pass mac to decipher(p, k)
+    // pass ciphertezt to decipher(p, k)
     return decipher(p, k);
 }
 
