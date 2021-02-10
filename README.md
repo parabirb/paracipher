@@ -1,5 +1,5 @@
 # paracipher
-a simple (and optionally authenticated) stream cipher based on SHA3-256. **DO NOT USE IN PRODUCTION.**
+**DO NOT USE IN PRODUCTION.** a simple (and optionally authenticated) stream cipher based on SHA3-256.
 
 ## how the cipher works
 each "block" is 128 bits. the state is initialized with a key and a nonce (at first, it is `hmac(nonce, key)`, where hmac is an hmac based on SHA3-256). for each block, the state is set to `hmac(previous state, key)` and then the block is XORed with the state (truncated to 128 bits).
@@ -15,6 +15,12 @@ each "block" is 128 bits. the state is initialized with a key and a nonce (at fi
 * `decipher(p: buffer, k: any): buffer` decrypts ciphertext `p` with key `k`. returns plaintext as a buffer.
 * `encipherAE(p: any, k: any, n: any): buffer` encrypts plaintext `p` with key `k` and nonce `n`. returns MAC, synthesized nonce, and ciphertext as a buffer.
 * `decipherAE(p: buffer, k: any): buffer` decrypts ciphertext `p` with key `k`. returns plaintext as a buffer. (it also verifies the MAC mentioned in `encipherAE` before decrypting.)
+
+## ok but why shouldn't i use this in production
+* i have no idea if this is secure or not. like, i think it's at least somewhat secure, but that's because i wrote it in the first place.
+* this doesn't really have any advantages over any existing stream ciphers? i mean chacha20 is probably faster
+* i don't think this is that good? i mean there are better stream ciphers
+* i probably made some dumbass design decisions while making this. like the 128-bit "block" thing was a weird design decision i made because i couldn't find a good PKCS7 library.
 
 ## usage
 an example can be found at test.js. `module.exports` returns an object with `encipher`, `decipher`, `encipherAE`, and `decipherAE`. the AE functions should be used if you would like authenticated encryption, and the non-AE functions can be used if you would like a cipher without authenticated encryption.
