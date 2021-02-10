@@ -1,7 +1,7 @@
 {
   "name": "paracipher",
   "version": "1.0.0",
-  "description": "a simple stream cipher based on sha3-256.",
+  "description": "[DO NOT USE IN PRODUCTION] a simple stream cipher based on sha3-256.",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
